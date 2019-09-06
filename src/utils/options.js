@@ -52,10 +52,14 @@ export function toSpawnOpts(flags: Flags): SpawnOpts {
 export function toFilterOpts(flags: Flags): FilterOpts {
   let filterOpts = {};
 
-  if (flags.only) filterOpts.only = string(flags.only, 'only');
-  if (flags.onlyFs) filterOpts.onlyFs = string(flags.onlyFs, 'onlyFs');
-  if (flags.ignore) filterOpts.ignore = string(flags.ignore, 'ignore');
-  if (flags.ignoreFs) filterOpts.ignoreFs = string(flags.ignoreFs, 'ignoreFs');
+  let split = (s: string | void): Array<string> =>
+    typeof s === 'string' ? s.split(',').filter(Boolean) : [];
+
+  if (flags.only) filterOpts.only = split(string(flags.only, 'only'));
+  if (flags.onlyFs) filterOpts.onlyFs = split(string(flags.onlyFs, 'onlyFs'));
+  if (flags.ignore) filterOpts.ignore = split(string(flags.ignore, 'ignore'));
+  if (flags.ignoreFs)
+    filterOpts.ignoreFs = split(string(flags.ignoreFs, 'ignoreFs'));
 
   return filterOpts;
 }

@@ -23,10 +23,10 @@ export type SpawnOpts = {
 };
 
 export type FilterOpts = {
-  only?: string,
-  ignore?: string,
-  onlyFs?: string,
-  ignoreFs?: string
+  only?: string | Array<string>,
+  ignore?: string | Array<string>,
+  onlyFs?: string | Array<string>,
+  ignoreFs?: string | Array<string>
 };
 
 export type Dependency = {

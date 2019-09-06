@@ -4,10 +4,10 @@ import type { JSONValue } from '../types';
 
 type Options = {
   cwd?: string,
-  only?: string,
-  ignore?: string,
-  onlyFs?: string,
-  ignoreFs?: string
+  only?: string | Array<string>,
+  ignore?: string | Array<string>,
+  onlyFs?: string | Array<string>,
+  ignoreFs?: string | Array<string>
 };
 
 type Packages = Array<{
